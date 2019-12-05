@@ -8,9 +8,13 @@ const ABSTRACT_APP_URL =
   process.env.STORYBOOK_ABSTRACT_APP_URL || "https://app.abstract.com";
 
 const Iframe = styled.iframe({
-  width: "100%",
-  height: "100%",
-  border: "0 none"
+  position: "absolute",
+  width: "96%",
+  height: "94%",
+  border: "0 none",
+  left: "50%",
+  top: "50%",
+  transform: "translate(-50%, -50%)"
 });
 
 function parseShareURL(url: string): string | void {
@@ -50,7 +54,7 @@ export function Panel() {
 
     const embedUrl = `${ABSTRACT_APP_URL}/embed/${inferShareId(
       shareDescriptor
-    )}?find={id}`;
+    )}?find={id}&chromeless`;
 
     return (
       <Iframe src={embedUrl.replace("{id}", encodeURIComponent(storyId))} />
